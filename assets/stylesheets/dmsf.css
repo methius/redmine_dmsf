@@ -398,11 +398,7 @@ input[type="submit"]:hover{
 .ui-widget-header .dataTables_info, .plupload_header_title, .plupload_header_text{
  color:#555555 !important;
 }
- 
-h2 a, h2 a:hover{
- color:#555555 !important;
-}
- 
+  
 div.flash.warning, .conflict{
  color: #2996cc !important;
  background:#eeeeee !important;
@@ -433,8 +429,7 @@ div.flash.warning, .conflict{
  
 #browser{
  line-height:30px;
-}
- 
+} 
  
 table.display tr{
  border:1px solid #d7d7d7;
@@ -445,6 +440,7 @@ table.display tr{
  font-weight: 500 !important;
  font-size: 14px !important;
 }
+
 .controls input:hover{
  color: #fff !important;	 
  background: #2996cc !important;
