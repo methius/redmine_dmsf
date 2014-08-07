@@ -24,7 +24,7 @@
 
 <td class="check"><%= check_box_tag(name, id, false, 
   :title => l(:title_check_for_zip_download_or_email)) %></td>
-<td class="id_listing">(<%= id %>)</td>
+<td class="id_listing"><%= id %></td>
 <td class="title">
   <% file_download_url = url_for({:only_path => false, :controller => :dmsf_files, :action => 'show', :id => file, :download => ''}) %>
   <%= link_to(h(title),

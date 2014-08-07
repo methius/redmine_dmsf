@@ -125,8 +125,8 @@
         <th class="check">
           <input id="check_all_entries" title="<%= l(:title_check_uncheck_all_for_zip_download_or_email) %>" type="checkbox" />
         </th>
-        <th><%= l(:link_title) %></th>
         <th>ID</th>
+        <th><%= l(:link_title) %></th>
         <th><%= l(:link_size) %></th>
         <th><%= l(:link_modified) %></th>
         <th title="<%= l(:label_version) %>"><%= l(:link_ver) %></th>
@@ -240,14 +240,14 @@
         },
                 'bAutoWidth': false,
         'bPaginate': false,
-        'aaSorting': [[1,'asc']],
+        'aaSorting': [[2,'asc']],
         'aaSortingFixed': [[8,'asc']],
         'aoColumnDefs': [
-          { 'bSearchable': false, 'aTargets': [0, 7, 8, 9] },
-          { 'bSortable': false, 'aTargets': [0, 7, 8] },
-          { 'iDataSort': 9, 'aTargets': [ 2 ] },
-          { 'iDataSort': 10, 'aTargets': [ 3 ] },
-          { 'iDataSort': 11, 'aTargets': [ 4 ] }
+          { 'bSearchable': false, 'aTargets': [0, 8, 9, 10] },
+          { 'bSortable': false, 'aTargets': [0, 8, 9] },
+          { 'iDataSort': 9, 'aTargets': [ 3 ] },
+          { 'iDataSort': 10, 'aTargets': [ 4 ] },
+          { 'iDataSort': 11, 'aTargets': [ 5 ] }
         ],
         'fnInitComplete': function() {
            jQuery('div.controls').prependTo(jQuery('#browser_wrapper div.fg-toolbar')[0]);
