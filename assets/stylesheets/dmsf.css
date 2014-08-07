@@ -89,6 +89,11 @@ input[type="checkbox"] {
 	margin: 1px;
 }
 
+div.id_listing {
+	padding: 0 10px 0 10px; float: left; font-size: 0.8em;
+	white-space: nowrap;
+}
+
 div.filename {
 	padding: 0 10px 0 10px; float: right; font-size: 0.8em;
 	white-space: nowrap;
