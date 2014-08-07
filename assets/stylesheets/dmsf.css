@@ -123,6 +123,13 @@ td.version {
 	white-space: nowrap;
 }
 
+td.id_listing {
+	font-size: 0.8em;
+	text-align: center;
+	white-space: nowrap;
+	width: 10px;
+}
+
 td.version img {
 	vertical-align:text-top;
 }
