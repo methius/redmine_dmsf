@@ -29,7 +29,19 @@ class DmsfFilesController < ApplicationController
   helper :dmsf_workflows
 
   def view
-    @revision = @file.last_revision
+    if params[:download].blank?
+      @revision = @file.last_revision
+    else
+      @revision = DmsfFileRevision.visible.find(params[:download].to_i)
+      if @revision.file != @file
+        render_403
+        return
+      end
+      if @revision.deleted
+        render_404
+        return
+      end
+    end
 
     check_project(@revision.file)
     access = DmsfFileRevisionAccess.new(:user_id => User.current.id, :dmsf_file_revision_id => @revision.id,
