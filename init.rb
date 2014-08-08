@@ -134,7 +134,25 @@ Redmine::Plugin.register :redmine_dmsf do
       end
       nil
     end
-  end    
+  end
+   
+  Redmine::WikiFormatting::Macros.register do
+    desc "Wiki link to view of DMSF file:\n\n" +
+             "!{{dmsf(file_id [, title [, revision_id]])}}\n\n" +
+         "_file_id_ / _revision_id_ can be found in link for file/revision download."
+         
+    macro :dmsfv do |obj, args|
+      return nil if args.length < 1 # require file id
+      entry_id = args[0].strip
+      entry = DmsfFile.find(entry_id)
+      unless entry.nil? || entry.deleted
+        title = args[1] ? args[1] : entry.title
+        revision = args[2] ? args[2] : ''
+        return link_to "#{title}", :controller => 'dmsf_files', :action => 'view', :id => entry, :download => revision, :only_path => false
+      end
+      nil
+    end
+  end 
   
   # Rubyzip configuration
   Zip.unicode_names = true
