@@ -27,17 +27,11 @@
 <td class="id_listing"><%= id %></td>
 <td class="title">
   <% file_view_url = url_for({:only_path => false, :controller => :dmsf_files, :action => 'view', :id => file, :download => ''}) %>
-  <% file_download_url = url_for({:only_path => false, :controller => :dmsf_files, :action => 'show', :id => file, :download => ''}) %>
   <%= link_to(h(title),
     file_view_url,
     :class => "icon icon-file #{DmsfHelper.filetype_css(file.name)}",
     :title => l(:title_title_version_version_download, :title => h(file.title), :version => file.version),
-    'data-downloadurl' => "#{file.last_revision.detect_content_type}:#{h(file.name)}:#{file_view_url}") %>    
-  <span class="icon"></span>
-  <%= link_to('',
-      file_download_url,
-      :title => "Download",
-      :class => 'icon icon-dmsf-rev-download')%>
+    'data-downloadurl' => "#{file.last_revision.detect_content_type}:#{h(file.name)}:#{file_view_url}") %>
   <div class="filename" title="<%= l(:title_filename_for_download)%>"><%= h(link ? link.path : file.display_name) %></div>
 </td>
 <td class="size"><%= number_to_human_size(file.last_revision.size) %></td>
@@ -78,6 +72,11 @@
 <td class="actions">
   <% if @file_manipulation_allowed %>          
     <div class="right_icon_box">
+        <% file_download_url = url_for({:only_path => false, :controller => :dmsf_files, :action => 'show', :id => file, :download => ''}) %> 
+        <%= link_to('',
+            file_download_url,
+            :title => "Download",
+            :class => 'icon icon-dmsf-rev-download')%>
       <% unless locked %>
         <%= link_to('',
           dmsf_file_path(:id => file),
@@ -114,7 +113,7 @@
             :class => 'icon icon-del') unless locked_for_user %>             
         <% end %>        
       <% else %>
-        <span class="icon"></span>
+        <span class="icon"></span> 
         <% if (!locked_for_user || @force_file_unlock_allowed) && file.unlockable? %>
           <%= link_to('',
             unlock_dmsf_files_path(:id => file),
